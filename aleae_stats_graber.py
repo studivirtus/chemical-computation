@@ -10,8 +10,7 @@
 #-------------------------------------------------------------------------------
 import string
 import pdb
-
-import pygal
+import matplotlib.pyplot as plt
 
 
 def main():
@@ -115,6 +114,81 @@ def collate(data):
     return reOrderedData
 
 
+def lineTypeColor(lineColor, lineType):
+    lColor = 'nil'
+    lType = 'nil'
+    if (lineColor == 0):
+        lColor = 'b'
+    elif (lineColor == 1):
+        lColor = 'g'
+    elif (lineColor == 2):
+        lColor = 'r'
+    elif (lineColor == 3):
+        lColor = 'c'
+    elif (lineColor == 4):
+        lColor = 'm'
+    elif (lineColor == 5):
+        lColor = 'y'
+    elif (lineColor == 6):
+        lColor = 'k'
+    elif (lineColor == 7):
+        lColor = 'w'
+
+    if (lineType == 0):
+        lType = '-'
+    elif (lineType == 1):
+        lType = '--'
+    elif (lineType == 2):
+        lType = '-.'
+    elif (lineType == 3):
+        lType = ':'
+    elif (lineType == 4):
+        lType = '.'
+    elif (lineType == 5):
+        lType = ','
+    elif (lineType == 6):
+        lType = 'o'
+    elif (lineType == 7):
+        lType = 'v'
+    elif (lineType == 8):
+        lType = '^'
+    elif (lineType == 9):
+        lType = '<'
+    elif (lineType == 10):
+        lType = '>'
+    elif (lineType == 11):
+        lType = '1'
+    elif (lineType == 12):
+        lType = '2'
+    elif (lineType == 13):
+        lType = '3'
+    elif (lineType == 14):
+        lType = '4'
+    elif (lineType == 15):
+        lType = 's'
+    elif (lineType == 16):
+        lType = 'p'
+    elif (lineType == 17):
+        lType = '*'
+    elif (lineType == 18):
+        lType = 'h'
+    elif (lineType == 19):
+        lType = 'H'
+    elif (lineType == 20):
+        lType = '+'
+    elif (lineType == 21):
+        lType = 'x'
+    elif (lineType == 22):
+        lType = 'D'
+    elif (lineType == 23):
+        lType = 'd'
+    elif (lineType == 24):
+        lType = '|'
+    elif (lineType == 25):
+        lType = '_'
+    return lColor + lType
+
+
 if __name__ == '__main__':
     main()
 
@@ -140,21 +214,27 @@ print(data)
 pdb.set_trace()
 reData = collate(data)
 print(reData)
+print(lineTypeColor(7,25))
 pdb.set_trace()
-line_chart = pygal.Line()
-line_chart.title = 'Number of Molicules'
-line_chart.x_labels = map(str, range(0, len(reData[0])))
+
+#line_chart = pygal.Line()
+#line_chart.title = 'Number of Molicules'
+#line_chart.x_labels = map(str, range(0, len(reData[0])))
 i = 0
+lineType = 0 # for cycling through matplotlib line types
+lineColor = 0 #for cycling through matplotlib line colors
 #    print(len(reData[i]))
-#   print (len(data[0][31]))
+#    print (len(data[0][31]))
 while i < len(reData):
     print('data', len(data[0]))
     print('reData', len(reData))
     print ('i', i)
     print (len(reData))
     print (len(data[0][i]))
-    line_chart.add(data[0][i], reData[i])
-    i += 1
-line_chart.render_to_file(DirectoryFile + ".svg")
+    #line_chart.add(data[0][i], reData[i])
 
+    plt.plot(reData[i], marker='o', linestyle='--', color='r', label=data[0][i])
+    i += 1
+#line_chart.render_to_file(DirectoryFile + ".svg")
+plt.show()
 i = 0
