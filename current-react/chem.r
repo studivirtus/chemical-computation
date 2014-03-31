@@ -1,33 +1,16 @@
-x1 1 xp1AB 1 yp1AB 1 : x1 1 start1 1 : 1
-start1 1 xp1 1 : xp1 1 : 1000
-start1 1 yp1 1 : yp1 1 : 1000
-start1 1 : sa1 1 sb1 1 : 1
-x1 1 sb1 1 : xp1 1 sb1 1 : 1000
-sb1 1 x1AB 1 : sb1 0 x1AB 0 : 1
-xp1 2 sbp1AB 1 : xp1 1 x1 1 xpp1 1 : 1000
-xpp1 1 : xpp1 0 : 1
-xp1 1 xpp1AB 1 sbp1AB 1 : : 1
-sa1 1 y1 1 : sa1 1 yp1 1 : 1
-sa1 1 y1AB 1 : : 1
-sa1AB 1 yp1 1 : y1 1 z1 1 : 1
-: x1AB 1 : 1
-x1AB 2 : x1AB 1 : 1000
-x1 1 x1AB 1 : x1 1 : 1000000
-: xp1AB 1 : 1
-xp1AB 2 : xp1AB 1 : 1000
-xp1 1 xp1AB 1 : xp1 1 : 1000000
-: yp1AB 1 : 1
-yp1AB 2 : yp1AB 1 : 1000
-yp1 1 yp1AB 1 : yp1 1 : 1000000
-: sbp1AB 1 : 1
-sbp1AB 2 : sbp1AB 1 : 1000
-sbp1 1 sbp1AB 1 : sbp1 1: 10000
-: y1AB 1 : 1
-y1AB 2 : y1AB 1 : 1000
-y1 1 y1AB 1 : y1 1 : 1000000
-: sa1AB 1 : 1
-sa1AB 2 : sa1AB 1 : 1000
-sa1 1 sa1AB 1 : sa1 1 : 1000000
-: xpp1AB 1 : 1
-xpp1AB 2 : xpp1AB 1 : 1000
-xpp1 1 xpp1AB 1 : xpp1 1: 1000000
+ : : 0 in A0, B0, begin000
+ : : 0 out A1, A0p, B0, B0p
+ : : 0 DS A0ab, B0ab, begin000ab
+begin000 1 A0 1 		: A1 1 A0p 1 begin000 1		: 1000
+begin000 1 B0 1 		: B1 1 B0p 1 begin000 1		: 1000
+A0ab 1 B0ab 1 begin000 1 	: A0ab 1 B0ab 	1		: 1000
+ : begin000ab 1 : 1
+begin000ab 2 : begin000ab 1 : 1000
+begin000 1 begin000ab 1 : begin000 1: 10000
+ : : 0 BEGIN ABSENCE INDICATORS
+ : A0ab 1 : 1
+A0ab 2 : A0ab 1 : 1000
+A0 1 A0ab 1 : A0 1: 10000
+ : B0ab 1 : 1
+B0ab 2 : B0ab 1 : 1000
+B0 1 B0ab 1 : B0 1: 10000

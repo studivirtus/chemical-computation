@@ -1,11 +1,12 @@
 #-------------------------------------------------------------------------------
 # Name:        PYTHON STATS GRABBER
-# Purpose: for use with Dr. Marc Ridels ALEAE program for chemical simulation
+# Purpose:     for use with Dr. Marc Ridels ALEAE program for chemical
+#              simulation
 #
 # Author:      Michael Mullen
 #
 # Created:     03/03/2014
-# Copyright:   (c) Michael 2014
+# Copyright:   Open Source - HAVE FUN!
 # Licence:     Open source! please give credit if used
 #-------------------------------------------------------------------------------
 import matplotlib
