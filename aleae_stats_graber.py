@@ -8,8 +8,9 @@
 # Copyright:   (c) Michael 2014
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
-import string
-import pdb
+import matplotlib
+# matplotlib.use('Agg')
+
 import matplotlib.pyplot as plt
 
 
@@ -38,22 +39,24 @@ def getVariables(lineOfText):
             insideParenthasis = True
         elif i == ')':
             insideParenthasis = False
-            whiteCount -=1
+            whiteCount -= 1
         if isVariable == True and i != ' ' and i != ')' and not insideParenthasis:
             whiteCount = 0
             variable = str(variable) + str(i)
             #print(variable)
     return variables
 
-def convertToNum(num):
+
+def  convertToNum(num):
     power10 = len(num) - 1
     total = 0
     for i in num:
-        total += i * (10**power10)
+        total += i * (10 ** power10)
         power10 -= 1
     return total
 
-def getNums(lineOfText):
+
+def  getNums(lineOfText):
     nums = []
     number = []
     num = []
@@ -61,18 +64,18 @@ def getNums(lineOfText):
     for i, line in enumerate(lineOfText):
         if i > 1:
             #print(line[0])
-            if line[0] =="S":
-                number=[]
+            if line[0] == "S":
+                number = []
                 for i in line:
                     if i.isdigit():
                         num.append(int(i))
                     #print(num)
-                    if i ==',' or i == ']' and num:
+                    if i == ',' or i == ']' and num:
                             number.append(convertToNum(num))
                             num = []
             if number:
                 nums.append(number)
-                number=[]
+                number = []
         #print(nums)
     return nums
 
@@ -88,11 +91,12 @@ def getVariInitalNums(readFile):
     print("THIS IS A TEST STATMENT")
     varVals = getNums(readFile)
     #print(varVals)
-    return( varNames,  varVals)
+    return(varNames,  varVals)
+
 
 def collate(data):
     dataVals = data[1]
-    reOrderedData=[]
+    reOrderedData = []
     d = []
     print(dataVals)
 
@@ -114,79 +118,104 @@ def collate(data):
     return reOrderedData
 
 
-def lineTypeColor(lineColor, lineType):
-    lColor = 'nil'
-    lType = 'nil'
-    if (lineColor == 0):
-        lColor = 'b'
-    elif (lineColor == 1):
-        lColor = 'g'
-    elif (lineColor == 2):
-        lColor = 'r'
-    elif (lineColor == 3):
-        lColor = 'c'
-    elif (lineColor == 4):
-        lColor = 'm'
-    elif (lineColor == 5):
-        lColor = 'y'
-    elif (lineColor == 6):
-        lColor = 'k'
-    elif (lineColor == 7):
-        lColor = 'w'
+def setLineMarker(lMaker):
+    lm = 'nil'
+    if (lMaker == 0):
+        lm = '.'
+    elif (lMaker == 1):
+        lm = ','
+    elif (lMaker == 2):
+        lm = 'o'
+    elif (lMaker == 3):
+        lm = 'v'
+    elif (lMaker == 4):
+        lm = '^'
+    elif (lMaker == 5):
+        lm = '<'
+    elif (lMaker == 6):
+        lm = '>'
+    elif (lMaker == 7):
+        lm = '1'
+    elif (lMaker == 8):
+        lm = '2'
+    elif (lMaker == 9):
+        lm = '3'
+    elif (lMaker == 10):
+        lm = '4'
+    elif (lMaker == 11):
+        lm = 's'
+    elif (lMaker == 12):
+        lm = 'p'
+    elif (lMaker == 13):
+        lm = '*'
+    elif (lMaker == 14):
+        lm = 'h'
+    elif (lMaker == 15):
+        lm = 'H'
+    elif (lMaker == 16):
+        lm = '+'
+    elif (lMaker == 17):
+        lm = 'x'
+    elif (lMaker == 18):
+        lm = 'D'
+    elif (lMaker == 19):
+        lm = 'd'
+    elif (lMaker == 20):
+        lm = '|'
+    elif (lMaker == 21):
+        lm = '_'
+    return lm
 
-    if (lineType == 0):
-        lType = '-'
-    elif (lineType == 1):
-        lType = '--'
-    elif (lineType == 2):
-        lType = '-.'
-    elif (lineType == 3):
-        lType = ':'
-    elif (lineType == 4):
-        lType = '.'
-    elif (lineType == 5):
-        lType = ','
-    elif (lineType == 6):
-        lType = 'o'
-    elif (lineType == 7):
-        lType = 'v'
-    elif (lineType == 8):
-        lType = '^'
-    elif (lineType == 9):
-        lType = '<'
-    elif (lineType == 10):
-        lType = '>'
-    elif (lineType == 11):
-        lType = '1'
-    elif (lineType == 12):
-        lType = '2'
-    elif (lineType == 13):
-        lType = '3'
-    elif (lineType == 14):
-        lType = '4'
-    elif (lineType == 15):
-        lType = 's'
-    elif (lineType == 16):
-        lType = 'p'
-    elif (lineType == 17):
-        lType = '*'
-    elif (lineType == 18):
-        lType = 'h'
-    elif (lineType == 19):
-        lType = 'H'
-    elif (lineType == 20):
-        lType = '+'
-    elif (lineType == 21):
-        lType = 'x'
-    elif (lineType == 22):
-        lType = 'D'
-    elif (lineType == 23):
-        lType = 'd'
-    elif (lineType == 24):
-        lType = '|'
-    elif (lineType == 25):
-        lType = '_'
-    return lColor + lType
+
+def setLineType(lType):
+    lt = "nil"
+    if (lType == 0):
+        lt = '-'
+    elif (lType == 1):
+        lt = '--'
+    elif (lType == 2):
+        lt = '-.'
+    return lt
+
+
+def setLineColor(lColor):
+    lc = 'nil'
+    if (lColor == 0):
+        lc = 'b'
+    elif (lColor == 1):
+        lc = 'g'
+    elif (lColor == 2):
+        lc = 'r'
+    elif (lColor == 3):
+        lc = 'c'
+    elif (lColor == 4):
+        lc = 'm'
+    elif (lColor == 5):
+        lc = 'y'
+    elif (lColor == 6):
+        lc = 'k'
+    return lc
+
+
+def  incLineMarker(lm):
+    lm += 1
+    if lm > 21:
+        lm = 0
+    return lm
+
+
+def  incLineType(lt):
+    lt += 1
+    if lt > 2:
+        lt = 0
+    return lt
+
+
+def  incLineColor(lc):
+    lc += 1
+    if lc > 6:
+        lc = 0
+    return lc
 
 
 if __name__ == '__main__':
@@ -197,7 +226,7 @@ if __name__ == '__main__':
     #fileName = line
 #fileName = fileName.replace("\n", "")
 
-fileName = "14-03-14_00:24:54:468648548"
+fileName = "14-03-14_02:05:12:523723551"
 
 
 directory = "/home/adminuser/Dropbox/EE5393/Assignments/homework1-problem2/"
@@ -211,30 +240,46 @@ for line in outPutFile:
     i = 2
 data = getVariInitalNums(outPutFile)
 print(data)
-pdb.set_trace()
+#pdb.set_trace()
 reData = collate(data)
 print(reData)
-print(lineTypeColor(7,25))
-pdb.set_trace()
+#pdb.set_trace()
 
-#line_chart = pygal.Line()
-#line_chart.title = 'Number of Molicules'
-#line_chart.x_labels = map(str, range(0, len(reData[0])))
-i = 0
-lineType = 0 # for cycling through matplotlib line types
-lineColor = 0 #for cycling through matplotlib line colors
-#    print(len(reData[i]))
-#    print (len(data[0][31]))
+i = 0  # counter to cycle through the data list
+lineMarker = 0  # for cycling through matplotlib line markers
+lineType = 0  # for cycling through matplotlib line types
+lineColor = 0  # for cycling through matplotlib line colors
+
 while i < len(reData):
-    print('data', len(data[0]))
-    print('reData', len(reData))
-    print ('i', i)
-    print (len(reData))
-    print (len(data[0][i]))
-    #line_chart.add(data[0][i], reData[i])
+    print(('data', len(data[0])))
+    print(('reData', len(reData)))
+    print(('i', i))
+    print((len(reData)))
+    print((len(data[0][i])))
 
-    plt.plot(reData[i], marker='o', linestyle='--', color='r', label=data[0][i])
+    lMarker = setLineMarker(lineMarker)
+    lType = setLineType(lineType)
+    lColor = setLineColor(lineColor)
+
+    #  multi line parenthasis: '(plt.plot...'
+    (plt.plot(
+        reData[i],
+        marker=lMarker,
+        linestyle=lType,
+        color=lColor,
+        label=data[0][i],
+        linewidth=3
+        ))
+
     i += 1
+    lineMarker = incLineColor(lineMarker)
+    lineType = incLineType(lineType)
+    lineColor = incLineColor(lineColor)
+
+
 #line_chart.render_to_file(DirectoryFile + ".svg")
+plt.legend()
+#fig = plt.gcf()
 plt.show()
+#fig.savefig('/home/adminuser/myfig')
 i = 0
