@@ -1,14 +1,15 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Name:        PYTHON STATS GRABBER
+# Purpose: for use with Dr. Marc Ridels ALEAE program for chemical simulation
 #
-# Author:      Michael
+# Author:      Michael Mullen
 #
-# Created:     09/03/2014
+# Created:     03/03/2014
 # Copyright:   (c) Michael 2014
-# Licence:     <your licence>
+# Licence:     Open source! please give credit if used
 #-------------------------------------------------------------------------------
 import matplotlib
+import pdb
 #matplotlib.use('Agg')
 
 import matplotlib.pyplot as plt
@@ -88,7 +89,7 @@ def getVariInitalNums(readFile):
         if i == 1:
             varNames = getVariables(line)
             #print(varNames)
-    print("THIS IS A TEST STATMENT")
+    #print("THIS IS A TEST STATMENT")
     varVals = getNums(readFile)
     #print(varVals)
     return(varNames, varVals)
@@ -99,7 +100,6 @@ def collate(data):
     reOrderedData = []
     d = []
     print(dataVals)
-
     print(len(dataVals[0]))
     print(len(dataVals))
 
@@ -118,52 +118,55 @@ def collate(data):
     return reOrderedData
 
 
-def setLineMarker(lMaker):
+def setLineMarker(lMarker):
     lm = 'nil'
-    if (lMaker == 0):
+    if (lMarker == 0):
         lm = '.'
-    elif (lMaker == 1):
+    elif (lMarker == 1):
         lm = ','
-    elif (lMaker == 2):
+    elif (lMarker == 2):
         lm = 'o'
-    elif (lMaker == 3):
+    elif (lMarker == 3):
         lm = 'v'
-    elif (lMaker == 4):
+    elif (lMarker == 4):
         lm = '^'
-    elif (lMaker == 5):
+    elif (lMarker == 5):
         lm = '<'
-    elif (lMaker == 6):
+    elif (lMarker == 6):
         lm = '>'
-    elif (lMaker == 7):
+    elif (lMarker == 7):
         lm = '1'
-    elif (lMaker == 8):
+    elif (lMarker == 8):
         lm = '2'
-    elif (lMaker == 9):
+    elif (lMarker == 9):
         lm = '3'
-    elif (lMaker == 10):
+    elif (lMarker == 10):
         lm = '4'
-    elif (lMaker == 11):
+    elif (lMarker == 11):
         lm = 's'
-    elif (lMaker == 12):
+    elif (lMarker == 12):
         lm = 'p'
-    elif (lMaker == 13):
+    elif (lMarker == 13):
         lm = '*'
-    elif (lMaker == 14):
+    elif (lMarker == 14):
         lm = 'h'
-    elif (lMaker == 15):
+    elif (lMarker == 15):
         lm = 'H'
-    elif (lMaker == 16):
+    elif (lMarker == 16):
         lm = '+'
-    elif (lMaker == 17):
+    elif (lMarker == 17):
         lm = 'x'
-    elif (lMaker == 18):
+    elif (lMarker == 18):
         lm = 'D'
-    elif (lMaker == 19):
+    elif (lMarker == 19):
         lm = 'd'
-    elif (lMaker == 20):
+    elif (lMarker == 20):
         lm = '|'
-    elif (lMaker == 21):
+    elif (lMarker == 21):
         lm = '_'
+    #print(lMarker)
+    #print(lm)
+    #pdb.set_trace()
     return lm
 
 
@@ -220,18 +223,18 @@ def  incLineColor(lc):
 
 if __name__ == '__main__':
     main()
+#  Comment the following lines to test ALEAE-STATS-GRABBER by itself
+import fileinput
+for line in fileinput.input():
+    fileName = line
+fileName = fileName.replace("\n", "")
+# END COMMENTED SECTION FOR TESTING
 
-#import fileinput
-#for line in fileinput.input():
-    #fileName = line
-#fileName = fileName.replace("\n", "")
-
-fileName = "14-03-14_02:05:12:523723551"
+#fileName = "demo" # USED FOR TESTING ALEAE-STATS-GRABBER BY ITSELF
 
 
 directory = "output/"
 DirectoryFile = directory + fileName
-print("1")
 
 
 outPutFile = open(DirectoryFile + ".outpt", mode='r')
@@ -239,10 +242,10 @@ for line in outPutFile:
     #print(line)
     i = 2
 data = getVariInitalNums(outPutFile)
-print(data)
+#print(data)
 #pdb.set_trace()
 reData = collate(data)
-print(reData)
+#print(reData)
 #pdb.set_trace()
 
 i = 0  # counter to cycle through the data list
@@ -251,11 +254,11 @@ lineType = 0  # for cycling through matplotlib line types
 lineColor = 0  # for cycling through matplotlib line colors
 
 while i < len(reData):
-    print(('data', len(data[0])))
-    print(('reData', len(reData)))
-    print(('i', i))
-    print((len(reData)))
-    print((len(data[0][i])))
+    #print(('data', len(data[0])))
+    #print(('reData', len(reData)))
+    #print(('i', i))
+    #print((len(reData)))
+    #print((len(data[0][i])))
 
     lMarker = setLineMarker(lineMarker)
     lType = setLineType(lineType)
@@ -272,7 +275,7 @@ while i < len(reData):
         ))
 
     i += 1
-    lineMarker = incLineColor(lineMarker)
+    lineMarker = incLineMarker(lineMarker)
     lineType = incLineType(lineType)
     lineColor = incLineColor(lineColor)
 
