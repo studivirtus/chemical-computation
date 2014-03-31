@@ -9,7 +9,7 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 import matplotlib
-matplotlib.use('Agg')
+#matplotlib.use('Agg')
 
 import matplotlib.pyplot as plt
 
@@ -91,7 +91,7 @@ def getVariInitalNums(readFile):
     print("THIS IS A TEST STATMENT")
     varVals = getNums(readFile)
     #print(varVals)
-    return(varNames,  varVals)
+    return(varNames, varVals)
 
 
 def collate(data):
@@ -261,14 +261,14 @@ while i < len(reData):
     lType = setLineType(lineType)
     lColor = setLineColor(lineColor)
 
-    #  multi line parenthasis: '(plt.plot...'
+    #  multi line parenthasis: '(plt.plot...)'
     (plt.plot(
         reData[i],
         marker=lMarker,
         linestyle=lType,
         color=lColor,
         label=data[0][i],
-        linewidth=3
+        linewidth=2
         ))
 
     i += 1
