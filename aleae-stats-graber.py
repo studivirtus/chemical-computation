@@ -9,7 +9,7 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 import matplotlib
-# matplotlib.use('Agg')
+matplotlib.use('Agg')
 
 import matplotlib.pyplot as plt
 
@@ -229,7 +229,7 @@ if __name__ == '__main__':
 fileName = "14-03-14_02:05:12:523723551"
 
 
-directory = "/home/adminuser/Dropbox/EE5393/Assignments/homework1-problem2/"
+directory = "output/"
 DirectoryFile = directory + fileName
 print("1")
 
@@ -277,9 +277,8 @@ while i < len(reData):
     lineColor = incLineColor(lineColor)
 
 
-#line_chart.render_to_file(DirectoryFile + ".svg")
 plt.legend()
-#fig = plt.gcf()
+fig = plt.gcf()
 plt.show()
-#fig.savefig('/home/adminuser/myfig')
+fig.savefig(DirectoryFile)
 i = 0
