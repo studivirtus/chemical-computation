@@ -280,6 +280,14 @@ while i < len(reData):
     lineType = incLineType(lineType)
     lineColor = incLineColor(lineColor)
 
+i = 0
+print((data[0]))
+print(data[len(data)-1][len(data[len(data)-1])-1])
+while i < (len(data[0])-1):
+    print(data[0][i])
+    print(data[len(data)-1][len(data[len(data)-1])-1][i])
+    i += 1
+
 
 plt.legend()
 fig = plt.gcf()

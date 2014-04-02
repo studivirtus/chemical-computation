@@ -30,6 +30,7 @@ aleae_stoch(const biocr_t           biocr, // reactions
 
    const vector<thresh_t> &T = biocr.T; // thresholds
    const vector<react_t > &R = biocr.R; // reactions
+   srand (time(NULL));
 
    bool   done = false; 
    while (!done && (param.time_lt < 0 || stats.time < param.time_lt)) {
