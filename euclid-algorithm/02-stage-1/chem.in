@@ -1,17 +1,22 @@
+M01FN06 0 GE 10
 beginModule01	1 N
 beginModule01ab	0 N 
 M01FN00	0 N
 M01FN01	0 N
 M01FN02	0 N
-A1	100 N
+M01FN03 0 N
+M01FN04	0 N
+M01FN05	0 N
+A1	66 N
 A1ab	0 N
 A1p	0 N
 A1pp	0 N
 A1ppab	0 N
 A1s	0 N
 A1sab	0 N
-B1	27 N
+B1	30 N
 B1ab	0 N
-B1p	0 N
+B1p	30 N
+B1pab	0 N
 B1pp	0 N
 B1ppab	0 N
