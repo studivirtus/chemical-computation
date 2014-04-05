@@ -4,7 +4,7 @@ echo $varDate
 file1="collatz-procedure/chem.in"
 file2="collatz-procedure/chem.r"
 repitions="1"
-time="10000"
+time="1000000"
 detail="12"
 
 aleae/aleae $file1 $file2 $repitions $time $detail | tee output/$varDate.outpt
